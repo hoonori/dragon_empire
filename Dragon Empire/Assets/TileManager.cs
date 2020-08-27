@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TileManager : MonoBehaviour
 {
-
-    public Color altColor = Color.black;
+    public Color altColor;
     public Renderer rend;
-    int x, z;
-    float timer;
+    //int x, z;
+    //float timer;
+
+    public void init(){
+        altColor = Color.black;
+    }
 
     void SetDefCol(){
         altColor.g = 0f;
@@ -20,15 +23,16 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        x = -1;
-        z = 0;
-        timer = 0.0f;
+        //x = -1;
+        //z = 0;
+        //timer = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+        /* was for chColor testing
         timer += Time.deltaTime;
         if (timer >= 1.0f){
             if (x < 5){
@@ -41,11 +45,12 @@ public class TileManager : MonoBehaviour
             chColor(x,z);
             timer = 0.0f;
         }
+        */
     }
     
-    void chColor(int x, int z)
+    public void chColor(string arr)
     {
-        string tilename = "Cube (" + x.ToString() + "," + z.ToString() + ")";
+        string tilename = "Cube (" + arr + ")";
         Debug.Log(tilename);
         rend = GameObject.Find(tilename).GetComponent<Renderer>();
         rend.material.color = altColor;
